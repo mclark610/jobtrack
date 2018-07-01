@@ -1,7 +1,6 @@
 const express = require('express')
 const logger  = require( './modules/logger.js')
 const config  = require('config')
-const bodyParser = require('body-parser')
 const cors       = require('cors')
 const srvConfig  = config.get('server')
 
@@ -12,10 +11,6 @@ let out = {
     results: true,
     notes  : 'placeholder'
 }
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.set("jsonp callback", true);
 app.use(cors({ origin: '*' }));
 
 app.get('/insert_jobtrack', function(req,res) {
