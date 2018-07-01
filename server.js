@@ -1,14 +1,36 @@
 const express = require('express')
-const logger = require( './modules/logger.js')
-const config = require('config')
-
-const srvConfig = config.get('server')
+const logger  = require( './modules/logger.js')
+const config  = require('config')
+const bodyParser = require('body-parser')
+const cors       = require('cors')
+const srvConfig  = config.get('server')
 
 const app = express()
 
-app.get('/', function(req,res) {
-    logger.log('info','/: placeholder');
-    res.send('Main Directory');
+let out = {
+    res_sts: 200,
+    results: true,
+    notes  : 'placeholder'
+}
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.set("jsonp callback", true);
+app.use(cors({ origin: '*' }));
+
+app.get('/insert_jobtrack', function(req,res) {
+    logger.log('info','insert_jobtrack placeholder');
+    res.status(out.res_sts).json(out);
+})
+
+app.get('/update_jobtrack', function(req,res) {
+    logger.log('info','update_jobtrack placeholder');
+    res.status(out.res_sts).json(out);
+})
+
+app.get('/delete_jobtrack', function(req,res) {
+    logger.log('info','delete_jobtrack placeholder');
+    res.status(out.res_sts).json(out);
 })
 
 app.listen( srvConfig.port, function() {

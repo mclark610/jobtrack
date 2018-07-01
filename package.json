@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/mclark610/jobtrack#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "config": "^1.30.0",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "winston": "^3.0.0"
   },
