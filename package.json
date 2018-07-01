@@ -1,0 +1,35 @@
+{
+  "name": "jobtrack",
+  "version": "1.0.0",
+  "description": "Job application tracking tool ",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mclark610/jobtrack.git"
+  },
+  "keywords": [
+    "node",
+    "mongo",
+    "react",
+    "express",
+    "rabbitmq"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mclark610/jobtrack/issues"
+  },
+  "homepage": "https://github.com/mclark610/jobtrack#readme",
+  "dependencies": {
+    "config": "^1.30.0",
+    "express": "^4.16.3",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
