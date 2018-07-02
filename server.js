@@ -15,6 +15,7 @@ let out = {
 }
 
 app.use(cors({ origin: '*' }));
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/', function(req,res) {
     res.sendFile( __dirname+'/public/view/index.html')
@@ -25,17 +26,18 @@ app.get('/fetch_jobtrack', function(req,res) {
     res.status(out.res_sts).json(out);
 })
 
-app.get('/insert_jobtrack', function(req,res) {
+app.post('/insert_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
+//    insert_jobtrack(req.data);
     res.status(out.res_sts).json(out);
 })
 
-app.get('/update_jobtrack', function(req,res) {
+app.post('/update_jobtrack', function(req,res) {
     logger.log('info','update_jobtrack placeholder');
     res.status(out.res_sts).json(out);
 })
 
-app.get('/delete_jobtrack', function(req,res) {
+app.post('/delete_jobtrack', function(req,res) {
     logger.log('info','delete_jobtrack placeholder');
     res.status(out.res_sts).json(out);
 })
