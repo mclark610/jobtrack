@@ -3,7 +3,7 @@ const logger  = require( './modules/logger')
 const config  = require('config')
 const cors        = require('cors')
 const srvConfig   = config.get('server')
-
+const bodyParser  = require('body-parser')
 const {initMongo} = require('./modules/db_jobtrack')
 
 const app = express()
@@ -15,6 +15,10 @@ let out = {
 }
 
 app.use(cors({ origin: '*' }));
+
+app.get('/', function(req,res) {
+    res.sendFile( __dirname+'/public/view/index.html')
+})
 
 app.get('/fetch_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
