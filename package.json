@@ -17,7 +17,9 @@
     "mongo",
     "react",
     "express",
-    "rabbitmq"
+    "rabbitmq",
+    "mocha",
+    "chai"
   ],
   "author": "",
   "license": "ISC",

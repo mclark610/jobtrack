@@ -14,8 +14,6 @@ let out = {
     notes  : 'placeholder'
 }
 
-initMongo()
-
 app.use(cors({ origin: '*' }));
 
 app.get('/fetch_jobtrack', function(req,res) {
