@@ -1,8 +1,10 @@
 const express = require('express')
-const logger  = require( './modules/logger.js')
+const logger  = require( './modules/logger')
 const config  = require('config')
-const cors       = require('cors')
-const srvConfig  = config.get('server')
+const cors        = require('cors')
+const srvConfig   = config.get('server')
+
+const {initMongo} = require('./modules/db_jobtrack')
 
 const app = express()
 
@@ -11,7 +13,15 @@ let out = {
     results: true,
     notes  : 'placeholder'
 }
+
+initMongo()
+
 app.use(cors({ origin: '*' }));
+
+app.get('/fetch_jobtrack', function(req,res) {
+    logger.log('info','insert_jobtrack placeholder');
+    res.status(out.res_sts).json(out);
+})
 
 app.get('/insert_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
