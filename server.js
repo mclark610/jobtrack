@@ -4,7 +4,10 @@ const config  = require('config')
 const cors        = require('cors')
 const srvConfig   = config.get('server')
 const bodyParser  = require('body-parser')
-const {initMongo} = require('./modules/db_jobtrack')
+const {insert_jobtrack,
+       update_jobtrack,
+       delete_jobtrack
+      } = require('./modules/db_jobtrack')
 
 const app = express()
 
@@ -28,18 +31,22 @@ app.get('/fetch_jobtrack', function(req,res) {
 
 app.post('/insert_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
-//    insert_jobtrack(req.data);
-    res.status(out.res_sts).json(out);
+
+    insert_jobtrack(req,res);
+
+    logger.log('info', 'req body: ' + JSON.stringify(req.body))
 })
 
 app.post('/update_jobtrack', function(req,res) {
     logger.log('info','update_jobtrack placeholder');
-    res.status(out.res_sts).json(out);
+    update_jobtrack(req,res);
+
+    logger.log('info', 'req body: ' + JSON.stringify(req.body))
 })
 
 app.post('/delete_jobtrack', function(req,res) {
     logger.log('info','delete_jobtrack placeholder');
-    res.status(out.res_sts).json(out);
+    update_jobtrack(req,res);
 })
 
 app.listen( srvConfig.port, function() {

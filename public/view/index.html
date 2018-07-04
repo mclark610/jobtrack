@@ -38,5 +38,40 @@
 
     <button id="insert" name="insert" type="submit">Insert</button>
 </form>
+<hr>
+<form id="frmUpdate" name="frmUpdate" action="/update_jobtrack" method="POST">
+    <input id="_id" name="_id" type="text" placeholder="ID">
+
+    <!-- Company -->
+    <input id="company-name" name="company-name" type="text" placeholder="Company">
+    <input id="company-contact" name="company-contact" type="text" placeholder="Company contact">
+    <input id="company-phone" name="company-phone" type="text" placeholder="Company phone">
+    <input id="company-url" name="company-url" type="text" placeholder="Company url">
+
+    <!-- Job Info -->
+    <input id="job-position" name="job-position" type="text" placeholder="Job Position">
+    <input id="job-description" name="job-description" type="text" placeholder="Job Description">
+    <input id="job-url" name="job-url" type="text" placeholder="Job url">
+    <input id="job-id" name="job-id" type="text" placeholder="Job id">
+
+    <!-- Recruiter Info -->
+    <input id="recruiter-company" name="recruiter-company" type="text" placeholder="Recruiter Company">
+    <input id="recruiter-contact" name="recruiter-contact" type="text" placeholder="Recruiter contact">
+    <input id="recruiter-phone" name="recruiter-phone" type="text" placeholder="Recruiter phone">
+    <input id="recruiter-url" name="recruiter-url" type="text" placeholder="Recruiter url">
+
+    <!-- Apply -->
+    <input id="apply-resume" name="apply-resume" type="text" placeholder="Resume used">
+    <input id="apply-cover" name="apply-cover" type="text" placeholder="Cover used">
+    <input id="apply-status" name="apply-status" type="text" placeholder="Status">
+    <input id="apply-date" name="apply-date" type="text" placeholder="Date applied">
+
+    <!-- History -->
+    <input id="history-date" name="history-date" type="text" placeholder="History Date">
+    <input id="history-note" name="history-note" type="text" placeholder="History Note">
+
+    <button id="update" name="update" type="submit">Update</button>
+</form>
+
 </body>
 </html>
