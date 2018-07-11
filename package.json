@@ -28,11 +28,18 @@
   },
   "homepage": "https://github.com/mclark610/jobtrack#readme",
   "dependencies": {
+    "ag-grid-react": "^18.1.0",
     "body-parser": "^1.18.3",
     "config": "^1.30.0",
     "cors": "^2.8.4",
+    "datatables.net": "^1.10.19",
+    "datatables.net-zf": "^1.10.19",
     "express": "^4.16.3",
+    "foundation-sites": "^6.5.0-rc.1",
+    "jquery": "^3.3.1",
     "mongodb": "^3.1.0",
+    "react-dom-factories": "^1.0.2",
+    "what-input": "^5.1.0",
     "winston": "^3.0.0"
   },
   "devDependencies": {

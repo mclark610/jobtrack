@@ -11,6 +11,12 @@ const {insert_jobtrack,
 
 const app = express()
 
+// Set public directory
+app.use("/css", express.static(__dirname+'/public/css'))
+app.use("/js", express.static(__dirname+'/public/js'))
+
+
+
 let out = {
     res_sts: 200,
     results: true,
@@ -22,6 +28,21 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/', function(req,res) {
     res.sendFile( __dirname+'/public/view/index.html')
+})
+
+app.get('/grid_data', function(req,res) {
+    logger.log('info','grid_data');
+    res.sendFile( __dirname+'/modules/testdata.json')
+})
+
+app.get('/grid_page', function(req,res) {
+    logger.log('info','grid_page');
+    res.sendFile( __dirname+'/public/view/grid_page.html')
+})
+
+app.get('/temp', function(req,res) {
+    logger.log('info','temp');
+    res.sendFile( __dirname+'/public/view/temp.html')
 })
 
 app.get('/fetch_jobtrack', function(req,res) {

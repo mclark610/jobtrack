@@ -1,14 +1,26 @@
-const config  = require('config')
-const logger  = require( './logger.js')
+const config  = require('config');
+const logger  = require( './logger.js');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID    = require('mongodb').ObjectID;
-const dbConfig   = config.get('database')
+const dbConfig   = config.get('database');
 
 function initMongo() {
     return MongoClient.connect( dbConfig.url,{useNewUrlParser: true});
 }
 
 module.exports = {
+    fetch_jobtrack: function(req,res) {
+        initMongo()
+            .then(function(client) {
+                logger.info("data: " + JSON.stringify(req.body))
+
+                let jt_db = client.db('jobtrack')
+            })
+            .catch(function(err) {
+                logger.info("fetch_jobtrack: error: " + err)
+            })
+
+    },
     insert_jobtrack: function(req,res) {
         initMongo()
             .then(function(client) {

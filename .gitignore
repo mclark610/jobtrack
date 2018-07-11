@@ -1,1 +1,5 @@
 node_modules/
+public/js/
+public/css/ag*
+public/css/data*
+public/css/fou*

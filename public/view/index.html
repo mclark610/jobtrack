@@ -4,74 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/foundation.min.css" />
     <title>Main Default Page</title>
 </head>
 <body>
-<form id="frmTest" name="frmTest" action="/insert_jobtrack" method="POST">
-    <!-- Company -->
-    <input id="company-name" name="company-name" type="text" placeholder="Company">
-    <input id="company-contact" name="company-contact" type="text" placeholder="Company contact">
-    <input id="company-phone" name="company-phone" type="text" placeholder="Company phone">
-    <input id="company-url" name="company-url" type="text" placeholder="Company url">
 
-    <!-- Job Info -->
-    <input id="job-position" name="job-position" type="text" placeholder="Job Position">
-    <input id="job-description" name="job-description" type="text" placeholder="Job Description">
-    <input id="job-url" name="job-url" type="text" placeholder="Job url">
-    <input id="job-id" name="job-id" type="text" placeholder="Job id">
+<!-- Menu -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Job Tracker</li>
+      <li>
+        <a href="#">Main Menu</a>
+        <ul class="menu vertical">
+          <li><a href="#">Main</a></li>
+          <li><a href="#">Recruiters</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Recruiter Info -->
-    <input id="recruiter-company" name="recruiter-company" type="text" placeholder="Recruiter Company">
-    <input id="recruiter-contact" name="recruiter-contact" type="text" placeholder="Recruiter contact">
-    <input id="recruiter-phone" name="recruiter-phone" type="text" placeholder="Recruiter phone">
-    <input id="recruiter-url" name="recruiter-url" type="text" placeholder="Recruiter url">
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+<!-- Main Container -->
+<div class="container">
+    <div class="row">
+        <form id="frmTest" name="frmTest" action="/insert_jobtrack" method="POST">
 
-    <!-- Apply -->
-    <input id="apply-resume" name="apply-resume" type="text" placeholder="Resume used">
-    <input id="apply-cover" name="apply-cover" type="text" placeholder="Cover used">
-    <input id="apply-status" name="apply-status" type="text" placeholder="Status">
-    <input id="apply-date" name="apply-date" type="text" placeholder="Date applied">
+            <!-- Company -->
+            <input id="company-name" name="company-name" type="text" placeholder="Company">
+            <input id="company-contact" name="company-contact" type="text" placeholder="Company contact">
+            <input id="company-phone" name="company-phone" type="text" placeholder="Company phone">
+            <input id="company-url" name="company-url" type="text" placeholder="Company url">
 
-    <!-- History -->
-    <input id="history-date" name="history-date" type="text" placeholder="History Date">
-    <input id="history-note" name="history-note" type="text" placeholder="History Note">
+            <!-- Job Info -->
+            <input id="job-position" name="job-position" type="text" placeholder="Job Position">
+            <input id="job-description" name="job-description" type="text" placeholder="Job Description">
+            <input id="job-url" name="job-url" type="text" placeholder="Job url">
+            <input id="job-id" name="job-id" type="text" placeholder="Job id">
 
-    <button id="insert" name="insert" type="submit">Insert</button>
-</form>
-<hr>
-<form id="frmUpdate" name="frmUpdate" action="/update_jobtrack" method="POST">
-    <input id="_id" name="_id" type="text" placeholder="ID">
+            <!-- Recruiter Info -->
+            <input id="recruiter-company" name="recruiter-company" type="text" placeholder="Recruiter Company">
+            <input id="recruiter-contact" name="recruiter-contact" type="text" placeholder="Recruiter contact">
+            <input id="recruiter-phone" name="recruiter-phone" type="text" placeholder="Recruiter phone">
+            <input id="recruiter-url" name="recruiter-url" type="text" placeholder="Recruiter url">
 
-    <!-- Company -->
-    <input id="company-name" name="company-name" type="text" placeholder="Company">
-    <input id="company-contact" name="company-contact" type="text" placeholder="Company contact">
-    <input id="company-phone" name="company-phone" type="text" placeholder="Company phone">
-    <input id="company-url" name="company-url" type="text" placeholder="Company url">
+            <!-- Apply -->
+            <input id="apply-resume" name="apply-resume" type="text" placeholder="Resume used">
+            <input id="apply-cover" name="apply-cover" type="text" placeholder="Cover used">
+            <input id="apply-status" name="apply-status" type="text" placeholder="Status">
+            <input id="apply-date" name="apply-date" type="text" placeholder="Date applied">
 
-    <!-- Job Info -->
-    <input id="job-position" name="job-position" type="text" placeholder="Job Position">
-    <input id="job-description" name="job-description" type="text" placeholder="Job Description">
-    <input id="job-url" name="job-url" type="text" placeholder="Job url">
-    <input id="job-id" name="job-id" type="text" placeholder="Job id">
+            <!-- History -->
+            <input id="history-date" name="history-date" type="text" placeholder="History Date">
+            <input id="history-note" name="history-note" type="text" placeholder="History Note">
 
-    <!-- Recruiter Info -->
-    <input id="recruiter-company" name="recruiter-company" type="text" placeholder="Recruiter Company">
-    <input id="recruiter-contact" name="recruiter-contact" type="text" placeholder="Recruiter contact">
-    <input id="recruiter-phone" name="recruiter-phone" type="text" placeholder="Recruiter phone">
-    <input id="recruiter-url" name="recruiter-url" type="text" placeholder="Recruiter url">
+            <button id="insert" name="insert" type="submit">Insert</button>
+        </form>
+    </div>
+    <div class="row">
+    <hr>
+        <form id="frmUpdate" name="frmUpdate" action="/update_jobtrack" method="POST">
+            <input id="_id" name="_id" type="text" placeholder="ID">
 
-    <!-- Apply -->
-    <input id="apply-resume" name="apply-resume" type="text" placeholder="Resume used">
-    <input id="apply-cover" name="apply-cover" type="text" placeholder="Cover used">
-    <input id="apply-status" name="apply-status" type="text" placeholder="Status">
-    <input id="apply-date" name="apply-date" type="text" placeholder="Date applied">
+            <!-- Company -->
+            <input id="company-name" name="company-name" type="text" placeholder="Company">
+            <input id="company-contact" name="company-contact" type="text" placeholder="Company contact">
+            <input id="company-phone" name="company-phone" type="text" placeholder="Company phone">
+            <input id="company-url" name="company-url" type="text" placeholder="Company url">
 
-    <!-- History -->
-    <input id="history-date" name="history-date" type="text" placeholder="History Date">
-    <input id="history-note" name="history-note" type="text" placeholder="History Note">
+            <!-- Job Info -->
+            <input id="job-position" name="job-position" type="text" placeholder="Job Position">
+            <input id="job-description" name="job-description" type="text" placeholder="Job Description">
+            <input id="job-url" name="job-url" type="text" placeholder="Job url">
+            <input id="job-id" name="job-id" type="text" placeholder="Job id">
 
-    <button id="update" name="update" type="submit">Update</button>
-</form>
+            <!-- Recruiter Info -->
+            <input id="recruiter-company" name="recruiter-company" type="text" placeholder="Recruiter Company">
+            <input id="recruiter-contact" name="recruiter-contact" type="text" placeholder="Recruiter contact">
+            <input id="recruiter-phone" name="recruiter-phone" type="text" placeholder="Recruiter phone">
+            <input id="recruiter-url" name="recruiter-url" type="text" placeholder="Recruiter url">
+
+            <!-- Apply -->
+            <input id="apply-resume" name="apply-resume" type="text" placeholder="Resume used">
+            <input id="apply-cover" name="apply-cover" type="text" placeholder="Cover used">
+            <input id="apply-status" name="apply-status" type="text" placeholder="Status">
+            <input id="apply-date" name="apply-date" type="text" placeholder="Date applied">
+
+            <!-- History -->
+            <input id="history-date" name="history-date" type="text" placeholder="History Date">
+            <input id="history-note" name="history-note" type="text" placeholder="History Note">
+
+            <button id="update" name="update" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/what-input.min.js"></script>
+<script src="./js/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
 
 </body>
 </html>
