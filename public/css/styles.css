@@ -1,0 +1,40 @@
+
+/* data table css */
+
+table[id="example"] {
+    border-color: rgb(10,153,153,0.31);
+    border: 1px solid rgb(10,153,153,0.31);
+    margin-left: 20px;
+}
+.example  {
+    font-size: 12px;
+    font-family: Arial;
+}
+.bottomcustom, .topcustom {
+    font-size: 12px;
+    font-family: Arial;
+    width: 540px;
+}
+
+.dataTables_info {
+    font-size: 12px;
+    font-family: Arial;
+}
+
+th {
+    background-color: rgb(10,153,153,0.31);
+    width: 100%;
+    border: 1px solid rgb(10,153,153,0.31);
+}
+tr {
+    border: 1px solid rgb(10,153,153,0.31);
+}
+td {
+    border: 1px solid rgb(10,153,153,0.31);
+}
+input[type="search"] {
+    border-radius: 18px;
+}
+select[name="example_length"] {
+    border-radius: 18px;
+}

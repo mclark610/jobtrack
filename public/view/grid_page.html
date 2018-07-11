@@ -7,22 +7,13 @@
 
     <link rel="stylesheet" href="./css/foundation.min.css" />
     <link rel="stylesheet" href="./css/dataTables.foundation.min.css"/>
+    <link rel="stylesheet" href="./css/styles.css"/>
     <title>Grid Page</title>
 </head>
 <body>
     <h1>Start of Datatables</h1>
-    <div class="container" style="height:80%;width:80%">
-        <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
+    <div class="container" style="height:80%;width:90%">
+        <table id="example" class="example" style="width:100%;table-layout: fixed;">
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
@@ -499,23 +490,51 @@
         <script type="text/javascript" src="./js/dataTables.foundation.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        })
         let columnDefs = [
             {
-                headerName: "Make",
-                field: "make",
+                title: "Name",
+                field: "name",
+                width: "30%",
+                visible: true
             },
             {
-                headerName: "Model",
-                field: "model",
+                title: "Position",
+                field: "position",
+                width: "20%",
+                visible: true
             },
             {
-                headerName: "Price",
-                field: "price"
+                title: "Office",
+                field: "office",
+                width: "20%",
+                visible: true
             },
+            {
+                title: "Age",
+                field: "age",
+                width: "10%",
+                visible: true
+            },
+            {
+                title: "Start date",
+                field: "date_start",
+                width: "10%",
+                visible: true
+            },
+            {
+                title: "Salary",
+                field: "salary",
+                width: "10%",
+                visible: true
+            }
         ]
+
+        $(document).ready(function() {
+            $('#example').DataTable({
+                columns: columnDefs,
+            });
+        })
+
 
         let gridOptions = {
             columnDefs: columnDefs,
