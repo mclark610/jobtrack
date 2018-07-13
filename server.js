@@ -15,8 +15,7 @@ const app = express()
 app.use("/css", express.static(__dirname+'/public/css'))
 app.use("/js", express.static(__dirname+'/public/js'))
 app.use("/images", express.static(__dirname+'/public/images'))
-
-
+app.use("/data", express.static(__dirname+'/public/data'))
 
 let out = {
     res_sts: 200,
@@ -33,7 +32,11 @@ app.get('/', function(req,res) {
 
 app.get('/grid_data', function(req,res) {
     logger.log('info','grid_data');
-    res.sendFile( __dirname+'/modules/testdata.json')
+    res.sendFile( __dirname+'/public/data/testdata.json')
+})
+app.get('/grid_data_test', function(req,res) {
+    logger.log('info','grid_data');
+    res.sendFile( __dirname+'/public/data/testdata_small.json')
 })
 
 app.get('/grid_page', function(req,res) {
