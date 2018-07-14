@@ -2,11 +2,14 @@
   "name": "jobtrack",
   "version": "1.0.0",
   "description": "Job application tracking tool ",
+  "private": true,
   "main": "server.js",
   "scripts": {
     "test": "mocha",
     "start-dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "webpack-dev-server --env.dev",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,10 +21,11 @@
     "react",
     "express",
     "rabbitmq",
+    "webpack",
     "mocha",
     "chai"
   ],
-  "author": "",
+  "author": "Mark",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mclark610/jobtrack/issues"
@@ -29,21 +33,34 @@
   "homepage": "https://github.com/mclark610/jobtrack#readme",
   "dependencies": {
     "ag-grid-react": "^18.1.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "body-parser": "^1.18.3",
     "config": "^1.30.0",
     "cors": "^2.8.4",
+    "css-loader": "^1.0.0",
     "datatables.net": "^1.10.19",
     "datatables.net-zf": "^1.10.19",
     "express": "^4.16.3",
     "foundation-sites": "^6.5.0-rc.1",
+    "fs": "0.0.1-security",
+    "fs-extra": "^6.0.1",
     "jquery": "^3.3.1",
+    "module": "^1.2.5",
     "mongodb": "^3.1.0",
+    "net": "^1.0.2",
+    "path": "^0.12.7",
     "react-dom-factories": "^1.0.2",
+    "tls": "0.0.1",
     "what-input": "^5.1.0",
     "winston": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }
