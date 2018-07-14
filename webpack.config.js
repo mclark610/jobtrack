@@ -9,7 +9,7 @@ module.exports = options => {
       filename: 'bundle.js',
     },
     module: {
-        
+
         exprContextRegExp: /$^/,
         exprContextCritical: false,
         rules: [
