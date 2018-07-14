@@ -8,31 +8,71 @@
     <link rel="stylesheet" href="./css/foundation.min.css" />
     <link rel="stylesheet" href="./css/dataTables.foundation.min.css"/>
     <link rel="stylesheet" href="./css/styles.css"/>
+
     <title>Grid Page</title>
 </head>
 <body>
-    <h1>Start of Datatables</h1>
-    <div class="container" style="height:80%;width:90%">
-        <table id="example" class="example" style="width:100%;table-layout: fixed;">
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
-            </table>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li>
+            <a href="#">Job Postings</a>
+            <ul class="menu vertical">
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Recruiters</a></li>
+              <li><a href="#">Companies</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><input type="search" placeholder="Search"></li>
+          <li><button type="button" class="button">Search</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-12 text-center">
+                <h3>Outstanding transactions</h3>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x" >
+            <div class="cell medium-12">
+                <table id="example" class="example" style="table-layout: fixed ">
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
+
     <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/foundation.min.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/dataTables.foundation.min.js"></script>
 
     <script>
         let columnDefs = [
+            {
+                title: "ID",
+                data: "id",
+                width: "5%",
+                visible: false,
+            },
             {
                 title: "Name",
                 data: "name",
@@ -42,7 +82,7 @@
             {
                 title: "Position",
                 data: "position",
-                width: "20%",
+                width: "25%",
                 visible: true
             },
             {
@@ -72,6 +112,7 @@
         ]
 
         $(document).ready(function() {
+            $(document).foundation();
 
             $('#example').DataTable({
                 "columns": columnDefs,
@@ -80,6 +121,7 @@
                 "ajax":{
                     "url" : "/grid_data_test",
                     "dataSrc":"data",
+                    "dataType": 'json',
                     "type": "GET"
                 }
             });

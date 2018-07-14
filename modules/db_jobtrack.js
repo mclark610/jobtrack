@@ -19,7 +19,6 @@ module.exports = {
             .catch(function(err) {
                 logger.info("fetch_jobtrack: error: " + err)
             })
-
     },
     insert_jobtrack: function(req,res) {
         initMongo()

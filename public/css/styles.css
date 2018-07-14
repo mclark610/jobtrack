@@ -4,18 +4,19 @@
 table[id="example"] {
     border-color: rgb(10,153,153,0.31);
     border: 1px solid rgb(10,153,153,0.31);
-    margin-left: 20px;
-}
-.example  {
     font-size: 12px;
     font-family: Arial;
+    margin: 0 0 !important;
+    max-width: none !important;
+    width: 100%;
+    border: none;
+
 }
 .bottomcustom, .topcustom {
     font-size: 12px;
     font-family: Arial;
     width: 540px;
 }
-
 .dataTables_info {
     font-size: 12px;
     font-family: Arial;
