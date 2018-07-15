@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-foundation": "^0.9.5",
     "react-scripts": "1.1.4"
   },
   "scripts": {
