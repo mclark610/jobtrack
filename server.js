@@ -44,9 +44,9 @@ app.get('/grid_page', function(req,res) {
     res.sendFile( __dirname+'/public/view/grid_page.html')
 })
 
-app.get('/temp', function(req,res) {
-    logger.log('info','temp');
-    res.sendFile( __dirname+'/public/view/temp.html')
+app.get('/recruiters', function(req,res) {
+    logger.log('info','recruiters');
+    res.sendFile( __dirname+'/public/view/recruiters.html')
 })
 
 app.get('/fetch_jobtrack', function(req,res) {

@@ -8,6 +8,11 @@ module.exports = options => {
     output: {
       filename: 'bundle.js',
     },
+    devServer: {
+        publicPath: "/",
+        contentBase: "./public/view",
+        hot: true
+    },
     module: {
 
         exprContextRegExp: /$^/,

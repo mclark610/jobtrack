@@ -7,9 +7,7 @@
   "scripts": {
     "test": "mocha",
     "start-dev": "nodemon server.js",
-    "start": "node server.js",
-    "dev": "webpack-dev-server --env.dev",
-    "build": "webpack"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -32,8 +30,8 @@
   },
   "homepage": "https://github.com/mclark610/jobtrack#readme",
   "dependencies": {
-    "ag-grid-react": "^18.1.0",
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "body-parser": "^1.18.3",
