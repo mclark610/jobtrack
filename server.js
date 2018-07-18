@@ -34,6 +34,12 @@ app.get('/grid_data', function(req,res) {
     logger.log('info','grid_data');
     res.sendFile( __dirname+'/public/data/testdata.json')
 })
+
+app.get('/grid_data_history', function(req,res) {
+    logger.log('info','grid_data_history');
+    res.sendFile( __dirname+'/public/data/testdata_history.json')
+})
+
 app.get('/grid_data_test', function(req,res) {
     logger.log('info','grid_data');
     res.sendFile( __dirname+'/public/data/testdata_small.json')
@@ -72,6 +78,11 @@ app.post('/update_jobtrack', function(req,res) {
 app.post('/delete_jobtrack', function(req,res) {
     logger.log('info','delete_jobtrack placeholder');
     update_jobtrack(req,res);
+})
+
+app.get('/test_page', function(req,res) {
+    logger.info("test_page called");
+    res.sendFile( __dirname+'/public/view/test_page.html')
 })
 
 app.listen( srvConfig.port, function() {

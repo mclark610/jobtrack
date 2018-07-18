@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" href="./css/foundation.min.css" />
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <title>Test Page</title>
+</head>
+<body>
+      <h2>Accordion Example</h2>
+      <ul class="accordion" data-accordion data-multi-expand="true">
+       <li class="accordion-item is-active" data-accordion-item>
+         <a href="#" class="accordion-title">Accordion 1</a>
+         <div class="accordion-content" data-tab-content >
+           <p>Panel 1. Lorem ipsum dolor</p>
+           <a href="#">Nowhere to Go</a>
+         </div>
+       </li>
+       <li class="accordion-item" data-accordion-item>
+         <a href="#" class="accordion-title">Accordion 2</a>
+         <div class="accordion-content" data-tab-content>
+           <textarea></textarea>
+           <button class="button">I do nothing!</button>
+         </div>
+       </li>
+       <li class="accordion-item" data-accordion-item>
+         <a href="#" class="accordion-title">Accordion 3</a>
+         <div class="accordion-content" data-tab-content>
+           Type your name!
+           <input type="text"></input>
+         </div>
+       </li>
+     </ul>
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/what-input.min.js"></script>
+      <script src="./js/foundation.min.js"></script>
+
+      <script>
+         $(document).ready(function() {
+            $(document).foundation();
+         })
+      </script>
+
+   </body>
+</html>
