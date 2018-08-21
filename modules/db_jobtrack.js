@@ -1,104 +1,38 @@
 const config  = require('config');
 const logger  = require( './logger.js');
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID    = require('mongodb').ObjectID;
+
 const dbConfig   = config.get('database');
 
-function initMongo() {
-    return MongoClient.connect( dbConfig.url,{useNewUrlParser: true});
-}
+const mongoose = require('mongoose');
+const Job = require('../data/job_model');
+const Recruiter = require('../data/recruiter_model');
+
+mongoose.connect('mongodb://localhost:27017/jobtrack',{ useNewUrlParser: true } );
+
+const db = mongoose.connection;
+
+
+db.on('error', console.error.bind(console,'connection error:'));
+
+db.on('open',function(){});
 
 module.exports = {
     fetch_jobtrack: function(req,res) {
-        initMongo()
-            .then(function(client) {
-                logger.info("data: " + JSON.stringify(req.body))
-
-                let jt_db = client.db('jobtrack')
-            })
-            .catch(function(err) {
-                logger.info("fetch_jobtrack: error: " + err)
-            })
+        Job.find({},function(err,jobs) {
+               if (err) {
+                   console.log(err)
+               } else {
+                   console.log("jobs: " + jobs )
+                   res.status(200).json(jobs);
+               }
+        })
     },
+
     insert_jobtrack: function(req,res) {
-        initMongo()
-            .then(function(client) {
-                logger.info("data: " + JSON.stringify(req.body))
-
-                let jt_db = client.db('jobtrack')
-
-                jt_db.collection('jobtrack').insertOne(req.body)
-                     .then(function(results) {
-                        logger.info("collection saved ok: " + results)
-                        logger.info("_id: " + results._id)
-                        logger.info("_id: " + results["ops"][0]["_id"])
-                        client.close();
-                     })
-                     .catch(function(err) {
-                         logger.error("insert_inner_jobtrack: " + err)
-                     })
-            })
-            .catch(function(err) {
-                logger.error("insert_jobtrack: " + err)
-            })
     },
     update_jobtrack: function(req,res) {
-        initMongo()
-            .then(function(client) {
-                logger.info("data: " + JSON.stringify(req.body))
-                // match id
-                let filter = {
-                    _id: ObjectID(req.body["_id"])
-                }
-                let data = req.body;
-
-                // Remove _id from data because we dont want to write over it!
-                delete data._id;
-
-                let jt_db = client.db('jobtrack')
-
-                jt_db.collection('jobtrack').update(filter, data,{upsert: true})
-                     .then(function(results) {
-                        logger.info("collection updated ok: " + results)
-                        client.close();
-                     })
-                     .catch(function(err) {
-                         logger.error("update_inner_jobtrack: " + err)
-                     })
-
-            })
-            .catch(function(err) {
-                logger.error("update_jobtrack: " + err)
-            })
     },
     delete_jobtrack: function(req,res) {
-        initMongo()
-            .then(function(client) {
-                logger.info("data: " + JSON.stringify(req.body))
-                // match id
-                let filter = {
-                    _id: ObjectID(req.body["_id"])
-                }
-                let data = req.body;
-
-                // Remove _id from data because we dont want to write over it!
-                delete data._id;
-
-                let jt_db = client.db('jobtrack')
-
-                jt_db.collection('jobtrack').deleteOne(filter)
-                     .then(function(results) {
-                        logger.info("collection deleted ok: " + results)
-                        client.close();
-                     })
-                     .catch(function(err) {
-                         logger.error("delete_inner_jobtrack: " + err)
-                     })
-
-            })
-            .catch(function(err) {
-                logger.error("delete_jobtrack: " + err)
-            })
     },
 
 

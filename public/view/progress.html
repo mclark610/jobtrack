@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progress Report</title>
+</head>
+<body>
+    <p id="report" name="report">
+
+    </p>
+    <!-- Job types -->
+    <script>
+      let jobs = [
+          {
+              "type": "programmer analyst",
+              "experience" : "3",
+              "technology" : [
+                  "javascript",
+                  "node",
+                  "c",
+                  "c++",
+                  "mysql"
+              ],
+              "location":"philadelphia,pa",
+              "salary": 90000
+          },
+          {
+              "type": "programmer analyst",
+              "experience" : "1",
+              "technology" : [
+                  "node",
+                  "mysql"
+              ],
+              "location":"newark,nj",
+              "salary": 55000
+          },
+          {
+              "type": "stack developer",
+              "experience" : "3",
+              "technology" : [
+                  "node",
+                  "d3",
+                  "foundation",
+                  "mysql"
+              ],
+              "location":"boise,id",
+              "salary": 45000
+          }
+      ]
+    </script>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+            d3.select("body")
+              .selectAll("p")
+              .data(jobs)
+              .enter().append("p")
+                .text(function(data) {
+                    return data.type;
+                })
+            .transition().style("background-color","black")
+            .transition().style("background-color","white")
+
+
+
+      })
+    </script>
+</body>
+</html>

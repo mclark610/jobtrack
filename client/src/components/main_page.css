@@ -1,0 +1,33 @@
+.MainPage-main  .data-table-wrapper {
+    border-color: rgb(10,153,153,0.31);
+    border: 1px solid rgb(10,153,153,0.31);
+
+    font-family: Arial;
+    margin: 0 0 !important;
+    max-width: none !important;
+    width: 100%;
+    border: none;
+}
+
+.example {
+    border-color: rgb(10,153,153,0.31);
+    border: 1px solid rgb(10,153,153,0.31);
+
+    font-family: Arial;
+    margin: 0 0 !important;
+    max-width: none !important;
+    width: 100%;
+    border: none;
+}
+
+.data-table-wrapper
+{
+    border-color: rgb(10,153,153,0.31);
+    border: 1px solid rgb(10,153,153,0.31);
+
+    font-family: Arial;
+    margin: 0 0 !important;
+    max-width: none !important;
+    width: 100%;
+    border: none;
+}

@@ -1,15 +1,15 @@
-const express = require('express')
-const logger  = require( './modules/logger')
-const config  = require('config')
-const cors        = require('cors')
-const srvConfig   = config.get('server')
-const bodyParser  = require('body-parser')
+const express     = require('express');
+const logger      = require( './modules/logger');
+const config      = require('config');
+const cors        = require('cors');
+const srvConfig   = config.get('server');
+const bodyParser  = require('body-parser');
 const {insert_jobtrack,
        update_jobtrack,
        delete_jobtrack
-      } = require('./modules/db_jobtrack')
+}                 = require('./modules/db_jobtrack.v1')
 
-const app = express()
+const app = express();
 
 // Set public directory
 app.use("/css", express.static(__dirname+'/public/css'))
@@ -27,7 +27,7 @@ app.use(cors({ origin: '*' }));
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/', function(req,res) {
-    res.sendFile( __dirname+'/public/view/index.html')
+    res.sendFile( __dirname+'/public/view/grid_page.html')
 })
 
 app.get('/grid_data', function(req,res) {
@@ -57,6 +57,8 @@ app.get('/recruiters', function(req,res) {
 
 app.get('/fetch_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
+    fetch_jobtrack(req,res);
+
     res.status(out.res_sts).json(out);
 })
 
@@ -84,6 +86,12 @@ app.get('/test_page', function(req,res) {
     logger.info("test_page called");
     res.sendFile( __dirname+'/public/view/test_page.html')
 })
+
+app.get('/report_progress', function(req,res) {
+    logger.info("report called");
+    res.sendFile( __dirname+'/public/view/progress.html')
+})
+
 
 app.listen( srvConfig.port, function() {
     logger.info("Listening on port " + srvConfig.port);

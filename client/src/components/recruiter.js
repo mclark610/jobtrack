@@ -2,55 +2,69 @@ import React, { Component } from 'react';
 import {
           GridContainer,Grid,Cell,
           Label,Link,Button,
-          Colors,Switch
+          Colors
        } from 'react-foundation';
 import Text from './text';
-
-
 import './recruiter.css';
 
+import '../common/foundation.min.css';
+
+const     $ = require('jquery')
+$.DataTable = require('datatables.net')
+
+const columns = [
+    {
+        title: 'ID',
+        width: 120,
+        data: 'id'
+    },
+    {
+        title: 'Recruiter Name',
+        width: 120,
+        data: 'name',
+    },
+    {
+        title: 'Recruiter Company',
+        width: 120,
+        data: 'company'
+    }, {
+        title: 'URL',
+        width: 180,
+        data: 'url'
+    },{
+        title: 'Phone',
+        width: 180,
+        data: 'phone'
+    }
+]
+
 class Recruiter extends Component {
+    componentDidMount() {
+        $(this.refs.main).DataTable({
+            dom: '<"data-table-wrapper"t>',
+            data: this.props.names, columns,
+            processing: true,ordering: false});
+    }
+    componentWillUnmount() {
+        $('.data-table-wrapper').find('table').DataTable().destroy(true);
+    }
+
+    shouldComponentUpdate() {
+        return false;
+    }
   render() {
     return (
-      <div className="Recruiter">
-        <h1>I am recruiter</h1>
-
-        <GridContainer gridFrame>
-            <Grid upOnMedium="2">
+        <GridContainer className="example">
+            <Grid upOnMedium={4}>
+            </Grid>
+            <Grid upOnSmall={2}>
                 <Cell>
-                    <Label>Recruiter Name</Label>
-                </Cell>
-                <Cell>
-                    <Text />
-                </Cell>
-                <Cell>
-                    <Label>Recruiter URL</Label>
-                </Cell>
-                <Cell>
-                    <Text />
+                    <div>
+                      <table id="main" className="MainPage-main" ref="main" />
+                    </div>
                 </Cell>
             </Grid>
-            <Grid upOnMedium="2">
-                <Cell>
-                    <Label>Recruiter Phone</Label>
-                </Cell>
-                <Cell>
-                    <Text />
-                </Cell>
-                <Cell>
-                    <Label>Recruiter Email</Label>
-                </Cell>
-                <Cell>
-                    <Text />
-                </Cell>
-            </Grid>
-            <Grid upOnMedium="4">
-                <Cell>
-                    <Link>Learn More</Link>
-                </Cell>
-                <Cell>
-                    <Link>View All Features</Link>
-                </Cell>
+            <Grid upOnMedium={4}>
                 <Cell>
                     <Button color={Colors.SUCCESS}>Save</Button>
                 </Cell>
@@ -58,15 +72,9 @@ class Recruiter extends Component {
                     <Button color={Colors.ALERT}>Delete</Button>
                 </Cell>
             </Grid>
-            <Grid upOnMedium="4">
-            <div className="switch-basics-example">
-              <Switch/>
-            </div>
-
+            <Grid upOnMedium={4}>
             </Grid>
         </GridContainer>
-
-      </div>
     );
   }
 }

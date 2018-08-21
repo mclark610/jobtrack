@@ -1,131 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible">
 
-    <link rel="stylesheet" href="./css/foundation.min.css" />
-    <link rel="stylesheet" href="./css/dataTables.foundation.min.css"/>
-    <link rel="stylesheet" href="./css/styles.css"/>
+  <link rel="stylesheet" href="./css/foundation.min.css" />
+  <link rel="stylesheet" href="./css/dataTables.foundation.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
 
-    <title>Grid Page</title>
+  <title>Grid Page</title>
 </head>
+
 <body>
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>
-            <a href="#">Job Postings</a>
-            <ul class="menu vertical">
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Recruiters</a></li>
-              <li><a href="#">Companies</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><input type="search" placeholder="Search"></li>
-          <li><button type="button" class="button">Search</button></li>
-        </ul>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">Job Postings</a>
+          <ul class="menu vertical">
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Recruiters</a></li>
+            <li><a href="#">Companies</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12 text-center">
+        <h3>Outstanding transactions</h3>
       </div>
     </div>
+    <div class="reveal" id="exampleModal1" data-reveal data-options: "data-close-on-click: false">
+      <div class="grid-x grid-margin-x">
+        <input type="hidden" id="id" name="id" />
 
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+        <div class="cell medium-12">
+          <label for="user-name" class="text-left">User Name:</label>
+          <input id="user-name" name="user-name" type="text" placeholder="User">
+        </div>
+        <div class="cell medium-12">
+          <label for="position" class="text-left">Position:</label>
+          <input id="position" name="position" type="text" placeholder="Position">
+        </div>
+        <div class="cell medium-12">
+          <label for="office" class="text-left">Office:</label>
+          <input id="office" name="office" type="text" placeholder="Office">
+        </div>
+        <div class="cell medium-2">
+          <label for="age" class="text-left">Age:</label>
+          <input id="age" name="age" type="text" placeholder="Age">
+        </div>
+        <div class="cell medium-5">
+          <label for="start-date" class="text-left">Start Date:</label>
+          <input id="start-date" name="start-date" type="text" placeholder="Start Date">
+        </div>
+        <div class="cell medium-5">
+          <label for="salary" class="text-left">Salary:</label>
+          <input id="salary" name="salary" type="text" placeholder="Salary">
+        </div>
+        <div class="cell medium-12">
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="cell small-12 text-align">
+          <div class="grid-x grid-margin-x">
             <div class="cell medium-12 text-center">
-                <h3>Outstanding transactions</h3>
+              <div class="expanded button-group">
+                <a id="delete_button" class="button">Delete</a>
+                <a id="cancel_button"class="button">Cancel</a>
+                <a id="save_button"class="button">Save</a>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="grid-x grid-margin-x" >
-            <div class="cell medium-12">
-                <table id="example" class="example" style="table-layout: fixed ">
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
+      </div>
+      <!-- reveal end -->
     </div>
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12">
+        <table id="example" class="example" style="table-layout: fixed ">
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Office</th>
+              <th>Age</th>
+              <th>Start date</th>
+              <th>Salary</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="cell small-12 text-align">
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12 text-center">
+          <button class="button" data-open="exampleModal1" value="0">New Record</button>
+      </div>
+    </div>
+  </div>
 
+  <script type="text/javascript" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/foundation.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="./js/dataTables.foundation.min.js"></script>
 
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/foundation.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="./js/dataTables.foundation.min.js"></script>
+  <script>
+    let columnDefs = [{
+        title: "ID",
+        data: null,
+        width: "5%",
+        visible: true,
+        render: function(data, type, row, meta) {
+          return "<button type=\"button\" data-open=\"exampleModal1\" class=\"hollow success button\">" + data["id"] + "</button>";
+        }
+      },
+      {
+        title: "Name",
+        data: "name",
+        width: "20%",
+        visible: true
+      },
+      {
+        title: "Position",
+        data: "position",
+        width: "15%",
+        visible: true
+      },
+      {
+        title: "Office",
+        data: "office",
+        width: "10%",
+        visible: true
+      },
+      {
+        title: "Age",
+        data: "age",
+        width: "10%",
+        visible: true
+      },
+      {
+        title: "Start date",
+        data: "date_start",
+        width: "10%",
+        visible: true
+      },
+      {
+        title: "Salary",
+        data: "salary",
+        width: "10%",
+        visible: true
+      }
+    ]
 
-    <script>
-        let columnDefs = [
-            {
-                title: "ID",
-                data: "id",
-                width: "5%",
-                visible: false,
-            },
-            {
-                title: "Name",
-                data: "name",
-                width: "30%",
-                visible: true
-            },
-            {
-                title: "Position",
-                data: "position",
-                width: "25%",
-                visible: true
-            },
-            {
-                title: "Office",
-                data: "office",
-                width: "20%",
-                visible: true
-            },
-            {
-                title: "Age",
-                data: "age",
-                width: "10%",
-                visible: true
-            },
-            {
-                title: "Start date",
-                data: "date_start",
-                width: "10%",
-                visible: true
-            },
-            {
-                title: "Salary",
-                data: "salary",
-                width: "10%",
-                visible: true
-            }
-        ]
+    $(document).ready(function() {
+      $(document).foundation();
 
-        $(document).ready(function() {
-            $(document).foundation();
+      var table = $('#example').DataTable({
+        "columns": columnDefs,
+        "processing": true,
+        "serverSide": false,
+        "ajax": {
+          "url": "/grid_data_test",
+          "dataSrc": "data",
+          "dataType": 'json',
+          "type": "GET"
+        }
+      });
 
-            $('#example').DataTable({
-                "columns": columnDefs,
-                "processing": true,
-                "serverSide": false,
-                "ajax":{
-                    "url" : "/grid_data_test",
-                    "dataSrc":"data",
-                    "dataType": 'json',
-                    "type": "GET"
-                }
-            });
-        })
-</script>
+      $('#example').on('click', 'button', function() {
+        let id = 0;
+        var data = table.row($(this).parents('tr')).data();
+
+        if (data["id"]) {
+          id = data["id"];
+
+          $('input[name="user-name"]').attr('value', data["name"]);
+          $('input[name="position"]').attr('value', data["position"]);
+          $('input[name="office"]').attr('value', data["office"]);
+          $('input[name="age"]').attr('value', data["age"]);
+          $('input[name="start-date"]').attr('value', data["date_start"]);
+          $('input[name="salary"]').attr('value', data["salary"]);
+        } else {
+          $('input[name="user-name"]').attr('value', "");
+          $('input[name="position"]').attr('value', "");
+          $('input[name="office"]').attr('value', "");
+          $('input[name="age"]').attr('value', "");
+          $('input[name="start-date"]').attr('value', "");
+          $('input[name="salary"]').attr('value', "");
+
+        }
+
+        $('input[name="id"]').attr('value', data["id"]);
+
+        console.log("data: " + JSON.stringify(data));
+
+      });
+    })
+  </script>
 </body>
+
 </html>
