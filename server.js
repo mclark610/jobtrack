@@ -47,7 +47,7 @@ app.get('/grid_data_test', function(req,res) {
 
 app.get('/grid_page', function(req,res) {
     logger.log('info','grid_page');
-    res.sendFile( __dirname+'/public/view/grid_page.html')
+    res.sendFile( __dirname+'/public/view/jobs_view.html')
 })
 
 app.get('/recruiters', function(req,res) {
