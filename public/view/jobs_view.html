@@ -8,9 +8,10 @@
 
   <link rel="stylesheet" href="./css/foundation.min.css" />
   <link rel="stylesheet" href="./css/dataTables.foundation.min.css" />
+  <link rel="stylesheet" href="./css/all.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 
-  <title>Grid Page</title>
+  <title>Jobs View</title>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <li>
           <a href="#">Job Postings</a>
           <ul class="menu vertical">
-            <li><a href="#">Jobs</a></li>
+            <li><a href="/jobs_view">Jobs</a></li>
             <li><a href="#">Recruiters</a></li>
             <li><a href="#">Companies</a></li>
           </ul>
@@ -38,79 +39,90 @@
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <div class="cell medium-12 text-center">
-        <h3>Outstanding transactions</h3>
+        <h3>Job Listing</h3>
       </div>
     </div>
-    <div class="reveal" id="exampleModal1" data-reveal data-options: "data-close-on-click: false">
-      <div class="grid-x grid-margin-x">
-        <input type="hidden" id="id" name="id" />
 
-        <div class="cell medium-12">
-          <label for="user-name" class="text-left">User Name:</label>
-          <input id="user-name" name="user-name" type="text" placeholder="User">
-        </div>
-        <div class="cell medium-12">
-          <label for="position" class="text-left">Position:</label>
-          <input id="position" name="position" type="text" placeholder="Position">
-        </div>
-        <div class="cell medium-12">
-          <label for="office" class="text-left">Office:</label>
-          <input id="office" name="office" type="text" placeholder="Office">
-        </div>
-        <div class="cell medium-2">
-          <label for="age" class="text-left">Age:</label>
-          <input id="age" name="age" type="text" placeholder="Age">
-        </div>
-        <div class="cell medium-5">
-          <label for="start-date" class="text-left">Start Date:</label>
-          <input id="start-date" name="start-date" type="text" placeholder="Start Date">
-        </div>
-        <div class="cell medium-5">
-          <label for="salary" class="text-left">Salary:</label>
-          <input id="salary" name="salary" type="text" placeholder="Salary">
-        </div>
-        <div class="cell medium-12">
-          <button class="close-button" data-close aria-label="Close modal" type="button">
+    <div class="reveal" id="modalJobtracker" data-reveal data-options: "data-close-on-click: false">
+      <form id="form-jobtrack" name="form-jobtrack" method="post" action="./jobs_view.html">
+
+        <div class="grid-x grid-margin-x">
+          <input type="hidden" id="_id" name="_id" />
+
+          <div class="cell medium-12">
+            <label for="company-name" class="text-left">Company Name:</label>
+            <input id="company-name" name="company-name" type="text" placeholder="Company">
+          </div>
+          <div class="cell medium-12">
+            <label for="position" class="text-left">Position:</label>
+            <input id="position" name="position" type="text" placeholder="Position">
+          </div>
+          <div class="cell medium-12">
+            <label for="keywords" class="text-left">Keywords:</label>
+            <input id="keywords" name="keywords" type="text" placeholder="Keywords">
+          </div>
+
+          <div class="cell medium-6">
+            <label for="contact" class="text-left">Contact:</label>
+            <input id="contact" name="contact" type="text" placeholder="Contact">
+          </div>
+          <div class="cell medium-6">
+            <label for="phone" class="text-left">Phone:</label>
+            <input id="phone" name="phone" type="text" placeholder="Phone">
+          </div>
+
+          <div class="cell medium-6">
+            <label for="recruiter" class="text-left">Recruiter:</label>
+            <input id="recruiter" name="recruiter" type="text" placeholder="Recruiter">
+          </div>
+
+          <div class="cell medium-6">
+            <label for="phone" class="text-left">Phone:</label>
+            <input id="phone" name="phone" type="text" placeholder="Phone">
+          </div>
+
+          <div class="cell medium-5">
+            <label for="rate" class="text-left">Rate:</label>
+            <input id="rate" name="rate" type="text" placeholder="Rate">
+          </div>
+          <div class="cell medium-5">
+            <label for="status" class="text-left">Status:</label>
+            <input id="status" name="status" type="text" placeholder="Status">
+          </div>
+
+          <div class="cell medium-12">
+            <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
           </button>
-        </div>
+          </div>
 
-        <div class="cell small-12 text-align">
-          <div class="grid-x grid-margin-x">
-            <div class="cell medium-12 text-center">
-              <div class="expanded button-group">
-                <a id="delete_button" class="button">Delete</a>
-                <a id="cancel_button"class="button">Cancel</a>
-                <a id="save_button"class="button">Save</a>
+          <div class="cell small-12 text-align">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12 text-center">
+                <div class=" expanded button-group">
+                  <button id="delete-button" name="delete-button" class="small button [success secondary alert]" name="reset" type="button">Delete</button>
+                  <button id="cancel-button" name="cancel-button" class="small button [success secondary alert]" name="cancel-button" type="button">Cancel</button>
+                  <button id="save-button" name="save-button" class="small button [success secondary alert]" type="submit">Save</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- reveal end -->
+        <!-- reveal end -->
     </div>
     <div class="grid-x grid-margin-x">
       <div class="cell medium-12">
-        <table id="example" class="example" style="table-layout: fixed ">
-          <tfoot>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </tfoot>
+        <table id="job-track" class="job-track" style="table-layout: fixed ">
         </table>
       </div>
     </div>
+    </form>
   </div>
+
   <div class="cell small-12 text-align">
     <div class="grid-x grid-margin-x">
       <div class="cell medium-12 text-center">
-          <button class="button" data-open="exampleModal1" value="0">New Record</button>
+        <button id="new-record" class="button new-record" data-open="modalJobtracker" value="0">New Record</button>
       </div>
     </div>
   </div>
@@ -127,12 +139,12 @@
         width: "5%",
         visible: true,
         render: function(data, type, row, meta) {
-          return "<button type=\"button\" data-open=\"exampleModal1\" class=\"hollow success small button\">" + data["id"] + "</button>";
+          return "<button type=\"button\" data-open=\"modalJobtracker\" class=\"hollow success small button value=" + data["_id"] + "\">" + "<i class=\"far fa-edit\"></i>" + "</button>";
         }
       },
       {
-        title: "Name",
-        data: "name",
+        title: "Company",
+        data: "company_name",
         width: "20%",
         visible: true
       },
@@ -143,74 +155,153 @@
         visible: true
       },
       {
-        title: "Office",
-        data: "office",
+        title: "Keywords",
+        data: "keywords",
+        width: "10%",
+        visible: true,
+        defaultContent: ""
+      },
+      {
+        title: "Contact",
+        data: "contact",
         width: "10%",
         visible: true
       },
       {
-        title: "Age",
-        data: "age",
+        title: "Phone",
+        data: "phone",
         width: "10%",
         visible: true
       },
       {
-        title: "Start date",
-        data: "date_start",
-        width: "10%",
-        visible: true
-      },
-      {
-        title: "Salary",
+        title: "Rate",
         data: "salary",
         width: "10%",
+        visible: true,
+        defaultContent: ""
+      },
+      {
+        title: "Recruiter",
+        data: "recruiters[0].name",
+        width: "10%",
         visible: true
-      }
+      },
+      {
+        title: "Status",
+        data: "status",
+        width: "10%",
+        visible: true
+      },
     ]
 
     $(document).ready(function() {
       $(document).foundation();
 
-      var table = $('#example').DataTable({
+      var table = $('#job-track').DataTable({
         "columns": columnDefs,
         "processing": true,
         "serverSide": false,
         "ajax": {
-          "url": "/grid_data_test",
-          "dataSrc": "data",
+          "url": "/fetch_jobtrack",
+          "dataSrc": "",
           "dataType": 'json',
           "type": "GET"
         }
       });
 
-      $('#example').on('click', 'button', function() {
+      $('#form-jobtrack').submit(function(e) {
+        alert("submit called")
+
+        console.log("e: " + JSON.stringify(e));
+        let formData = {
+//            '_id': $('input[name=_id]').val(),
+            'company_name': $('input[name=company-name]').val(),
+        }
+        console.log("formData: " + JSON.stringify(formData));
+
+        $.ajax({
+            type      : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url       : '/insert_jobtrack', // the url where we want to POST
+            data      : formData, // our data object
+            dataType  : 'json', // what type of data do we expect back from the server
+            encode    : true
+        })
+
+        event.preventDefault();
+
+      });
+
+      $('#new-record').on('click', function() {
+        $('input[name="company-name"]').attr('value', "");
+        $('input[name="position"]').attr('value', "");
+        $('input[name="keywords"]').attr('value', "");
+        $('input[name="contact"]').attr('value', "");
+        $('input[name="phone"]').attr('value', "");
+        $('input[name="recruiter"]').attr('value', "");
+        $('input[name="status"]').attr('value', "");
+      });
+
+      $('#cancel-button').on('click', function() {
+        console.log("cancel hit");
+        alert("cancel hit")
+      })
+
+      $('#save-button').on('click', function(e) {
+        e.preventDefault;
+        let formData = {
+          'company_name': $('input[name=company_name]').val() ? $('input[name=company_name]').val() : 'empty',
+          'position': $('input[name=positon].val').val()
+        };
+        let post;
+        $("form#item-form :input").each(function() {
+          var input = $(this);
+          if (typeof input.attr("name") != 'undefined') {
+            if (input.attr("data-value")) {
+              post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("data-value"));
+            } else if (input.attr("name") == 'donated_beer') {
+              if ($(this).attr("checked")) {
+                post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("value"));
+              }
+            } else {
+              post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("value"));
+            }
+          }
+        });
+
+        console.log("formData: " + JSON.stringify(formData));
+
+        alert("save button");
+
+      })
+
+      $('#delete-button').on('click', function(e) {
+        alert("hitting deleting button")
+      })
+
+      $('#job-track').on('click', 'button', function() {
         let id = 0;
         var data = table.row($(this).parents('tr')).data();
 
-        if (data["id"]) {
-          id = data["id"];
+        if (data["_id"]) {
+          id = data["_id"];
 
-          $('input[name="user-name"]').attr('value', data["name"]);
+          $('input[name="company-name"]').attr('value', data["company_name"]);
           $('input[name="position"]').attr('value', data["position"]);
-          $('input[name="office"]').attr('value', data["office"]);
-          $('input[name="age"]').attr('value', data["age"]);
-          $('input[name="start-date"]').attr('value', data["date_start"]);
+          $('input[name="keywords"]').attr('value', data["keywords"]);
+          $('input[name="contact"]').attr('value', data["contact"]);
+          $('input[name="phone"]').attr('value', data["phone"]);
           $('input[name="salary"]').attr('value', data["salary"]);
-        } else {
-          $('input[name="user-name"]').attr('value', "");
-          $('input[name="position"]').attr('value', "");
-          $('input[name="office"]').attr('value', "");
-          $('input[name="age"]').attr('value', "");
-          $('input[name="start-date"]').attr('value', "");
-          $('input[name="salary"]').attr('value', "");
 
+          let rct = data["recruiters"][0]["name"];
+          if (!rct) rct = "";
+          $('input[name="recruiter"]').attr('value', rct);
+          $('input[name="status"]').attr('value', data["status"]);
         }
 
-        $('input[name="id"]').attr('value', data["id"]);
-
         console.log("data: " + JSON.stringify(data));
-
       });
+
+
     })
   </script>
 </body>

@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/mclark610/jobtrack#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

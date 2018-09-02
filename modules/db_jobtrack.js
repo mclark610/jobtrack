@@ -22,7 +22,6 @@ module.exports = {
         Job.find({
             position: "Conductor"
         }, `_id
-                     recruiter
                      company_name
                      position
                      description
@@ -31,19 +30,21 @@ module.exports = {
                      url
                      email
                      status
+                     recruiters.name
             `, function(err, jobs) {
                     if (err) {
                         console.log("err: " + err);
-                        res.status(500).json(err);
+                        res.status(400).json(err);
                     } else {
                         res.status(200).json(jobs);
-                        //                console.log("JOBS: " + jobs)
+                        console.log("JOBS: " + jobs)
             }
         })
     },
 
     insert_jobtrack: function(req, res) {
-
+        console.log("req: " + JSON.stringify(req.body));
+        /*
         let job = Job.create({
             company_name: "Trans Union",
             position: "Conductor",
@@ -54,9 +55,10 @@ module.exports = {
             recruiters: [{
                 name: "Fred",
                 phone: "666-555-4444"
-            }],
-
-        }, function(err, review) {
+            }]
+*/
+let job = Job.create(req.body
+        , function(err, review) {
             if (err) {
                 console.log("insert_jobtrack: couldnt save properly: " + err)
             } else {

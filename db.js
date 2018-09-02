@@ -8,8 +8,8 @@ var db = mongoose.connection;
 
 let req,res;
 
-// fetch_jobtrack(req,res);
-insert_jobtrack(req,res);
+ fetch_jobtrack(req,res);
+//insert_jobtrack(req,res);
 
 
 

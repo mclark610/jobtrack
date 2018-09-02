@@ -6,8 +6,9 @@ const srvConfig   = config.get('server');
 const bodyParser  = require('body-parser');
 const {insert_jobtrack,
        update_jobtrack,
-       delete_jobtrack
-}                 = require('./modules/db_jobtrack.v1')
+       delete_jobtrack,
+       fetch_jobtrack
+}                 = require('./modules/db_jobtrack')
 
 const app = express();
 
@@ -15,6 +16,7 @@ const app = express();
 app.use("/css", express.static(__dirname+'/public/css'))
 app.use("/js", express.static(__dirname+'/public/js'))
 app.use("/images", express.static(__dirname+'/public/images'))
+app.use("/webfonts", express.static(__dirname+'/public/webfonts'))
 app.use("/data", express.static(__dirname+'/public/data'))
 app.use("/view", express.static(__dirname+'/public/view'))
 let out = {
@@ -47,6 +49,11 @@ app.get('/grid_data_test', function(req,res) {
 
 app.get('/grid_page', function(req,res) {
     logger.log('info','grid_page');
+    res.sendFile( __dirname+'/public/view/grid_page.html')
+})
+
+app.get('/jobs_view', function(req,res) {
+    logger.log('info','jobs_view');
     res.sendFile( __dirname+'/public/view/jobs_view.html')
 })
 
@@ -58,8 +65,6 @@ app.get('/recruiters', function(req,res) {
 app.get('/fetch_jobtrack', function(req,res) {
     logger.log('info','insert_jobtrack placeholder');
     fetch_jobtrack(req,res);
-
-    res.status(out.res_sts).json(out);
 })
 
 app.post('/insert_jobtrack', function(req,res) {
