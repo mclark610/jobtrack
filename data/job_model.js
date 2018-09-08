@@ -13,22 +13,9 @@ let JobSchema = new mongoose.Schema({
     email: String,
     status: String,
     resume: String,
+	rate: String,
     cover: String,
     keywords: String,
-	contact: {
-		type: String,
-		default: () => {
-			if (this.recruiters[0]) {
-					return this.recruiters[0].name;
-			}
-			else if ( this.company_contact) {
-				return this.company_contact;
-			}
-			else {
-				return '';
-			}
-		}
-	},
 	recruiters: [Recruiter],
     date_submitted: Date,
     status: {

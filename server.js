@@ -63,12 +63,10 @@ app.get('/recruiters', function(req,res) {
 })
 
 app.get('/fetch_jobtrack', function(req,res) {
-    logger.log('info','insert_jobtrack placeholder');
     fetch_jobtrack(req,res);
 })
 
 app.post('/insert_jobtrack', function(req,res) {
-    logger.log('info','insert_jobtrack placeholder');
 
     insert_jobtrack(req,res);
 
@@ -83,8 +81,7 @@ app.post('/update_jobtrack', function(req,res) {
 })
 
 app.post('/delete_jobtrack', function(req,res) {
-    logger.log('info','delete_jobtrack placeholder');
-    update_jobtrack(req,res);
+    delete_jobtrack(req,res);
 })
 
 app.get('/test_page', function(req,res) {

@@ -19,53 +19,59 @@ db.on('open', function() {});
 
 module.exports = {
     fetch_jobtrack: function(req, res) {
-        Job.find({
-            position: "Conductor"
-        }, `_id
-                     company_name
-                     position
-                     description
-                     contact
-                     phone
-                     url
-                     email
-                     status
-                     recruiters.name
+        Job.find({}, `
+              _id
+             company_name
+             position
+             description
+             contact
+             phone
+             url
+             email
+             status
+             recruiters.name
+
             `, function(err, jobs) {
-                    if (err) {
-                        console.log("err: " + err);
-                        res.status(400).json(err);
-                    } else {
-                        res.status(200).json(jobs);
-                        console.log("JOBS: " + jobs)
+            if (err) {
+                console.log("err: " + err);
+                res.status(400).json(err);
+            } else {
+                res.status(200).json(jobs);
+                console.log("JOBS: " + jobs)
             }
         })
     },
 
     insert_jobtrack: function(req, res) {
         console.log("req: " + JSON.stringify(req.body));
-        /*
-        let job = Job.create({
-            company_name: "Trans Union",
-            position: "Conductor",
-            description: "big job that requires 10 people to do",
-            contact: "Ssjfdasmfdesh Singh",
-            phone: "570-949-4944",
-            url: "http://cheaplabor.net",
-            recruiters: [{
-                name: "Fred",
-                phone: "666-555-4444"
-            }]
-*/
-let job = Job.create(req.body
-        , function(err, review) {
+        let job = new Job( req.body ); //Job.create(req.body, function(err, review) {
+        job.save(function(err,result) {
+            console.log("insert_jobtrack: err: " + err)
+            console.log("insert_jobtrack result: " + result)
+        })
+    },
+
+    update_jobtrack: function(req, res) {
+        Job.findById(req.body._id, function(err, job) {
             if (err) {
-                console.log("insert_jobtrack: couldnt save properly: " + err)
+                console.log("err: " + err);
+                res.status(400).json(err);
             } else {
-                console.log("review: " + review);
+                job.set(req.body);
+                job.save(function(err,updatedJob) {
+                    res.status(200).json(updatedJob);
+                })
             }
         })
     },
-    update_jobtrack: function(req, res) {},
-    delete_jobtrack: function(req, res) {}
+    delete_jobtrack: function(req, res) {
+        Job.findByIdAndRemove(req.body._id, function(err) {
+            if (err) {
+                console.log("err: " + err);
+                res.status(400).json(err);
+            } else {
+                res.status(200);
+            }
+        })
+    }
 }

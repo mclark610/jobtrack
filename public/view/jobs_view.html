@@ -47,7 +47,7 @@
       <form id="form-jobtrack" name="form-jobtrack" method="post" action="./jobs_view.html">
 
         <div class="grid-x grid-margin-x">
-          <input type="hidden" id="_id" name="_id" />
+          <input type="hidden" id="_id" name="_id"/>
 
           <div class="cell medium-12">
             <label for="company-name" class="text-left">Company Name:</label>
@@ -122,7 +122,7 @@
   <div class="cell small-12 text-align">
     <div class="grid-x grid-margin-x">
       <div class="cell medium-12 text-center">
-        <button id="new-record" class="button new-record" data-open="modalJobtracker" value="0">New Record</button>
+        <button id="new-record" class="button new-record" data-open="modalJobtracker" >New Record</button>
       </div>
     </div>
   </div>
@@ -131,179 +131,7 @@
   <script type="text/javascript" src="./js/foundation.min.js"></script>
   <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="./js/dataTables.foundation.min.js"></script>
-
-  <script>
-    let columnDefs = [{
-        title: "ID",
-        data: null,
-        width: "5%",
-        visible: true,
-        render: function(data, type, row, meta) {
-          return "<button type=\"button\" data-open=\"modalJobtracker\" class=\"hollow success small button value=" + data["_id"] + "\">" + "<i class=\"far fa-edit\"></i>" + "</button>";
-        }
-      },
-      {
-        title: "Company",
-        data: "company_name",
-        width: "20%",
-        visible: true
-      },
-      {
-        title: "Position",
-        data: "position",
-        width: "15%",
-        visible: true
-      },
-      {
-        title: "Keywords",
-        data: "keywords",
-        width: "10%",
-        visible: true,
-        defaultContent: ""
-      },
-      {
-        title: "Contact",
-        data: "contact",
-        width: "10%",
-        visible: true
-      },
-      {
-        title: "Phone",
-        data: "phone",
-        width: "10%",
-        visible: true
-      },
-      {
-        title: "Rate",
-        data: "salary",
-        width: "10%",
-        visible: true,
-        defaultContent: ""
-      },
-      {
-        title: "Recruiter",
-        data: "recruiters[0].name",
-        width: "10%",
-        visible: true
-      },
-      {
-        title: "Status",
-        data: "status",
-        width: "10%",
-        visible: true
-      },
-    ]
-
-    $(document).ready(function() {
-      $(document).foundation();
-
-      var table = $('#job-track').DataTable({
-        "columns": columnDefs,
-        "processing": true,
-        "serverSide": false,
-        "ajax": {
-          "url": "/fetch_jobtrack",
-          "dataSrc": "",
-          "dataType": 'json',
-          "type": "GET"
-        }
-      });
-
-      $('#form-jobtrack').submit(function(e) {
-        alert("submit called")
-
-        console.log("e: " + JSON.stringify(e));
-        let formData = {
-//            '_id': $('input[name=_id]').val(),
-            'company_name': $('input[name=company-name]').val(),
-        }
-        console.log("formData: " + JSON.stringify(formData));
-
-        $.ajax({
-            type      : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url       : '/insert_jobtrack', // the url where we want to POST
-            data      : formData, // our data object
-            dataType  : 'json', // what type of data do we expect back from the server
-            encode    : true
-        })
-
-        event.preventDefault();
-
-      });
-
-      $('#new-record').on('click', function() {
-        $('input[name="company-name"]').attr('value', "");
-        $('input[name="position"]').attr('value', "");
-        $('input[name="keywords"]').attr('value', "");
-        $('input[name="contact"]').attr('value', "");
-        $('input[name="phone"]').attr('value', "");
-        $('input[name="recruiter"]').attr('value', "");
-        $('input[name="status"]').attr('value', "");
-      });
-
-      $('#cancel-button').on('click', function() {
-        console.log("cancel hit");
-        alert("cancel hit")
-      })
-
-      $('#save-button').on('click', function(e) {
-        e.preventDefault;
-        let formData = {
-          'company_name': $('input[name=company_name]').val() ? $('input[name=company_name]').val() : 'empty',
-          'position': $('input[name=positon].val').val()
-        };
-        let post;
-        $("form#item-form :input").each(function() {
-          var input = $(this);
-          if (typeof input.attr("name") != 'undefined') {
-            if (input.attr("data-value")) {
-              post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("data-value"));
-            } else if (input.attr("name") == 'donated_beer') {
-              if ($(this).attr("checked")) {
-                post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("value"));
-              }
-            } else {
-              post += "&" + input.attr("name") + "=" + encodeURIComponent(input.attr("value"));
-            }
-          }
-        });
-
-        console.log("formData: " + JSON.stringify(formData));
-
-        alert("save button");
-
-      })
-
-      $('#delete-button').on('click', function(e) {
-        alert("hitting deleting button")
-      })
-
-      $('#job-track').on('click', 'button', function() {
-        let id = 0;
-        var data = table.row($(this).parents('tr')).data();
-
-        if (data["_id"]) {
-          id = data["_id"];
-
-          $('input[name="company-name"]').attr('value', data["company_name"]);
-          $('input[name="position"]').attr('value', data["position"]);
-          $('input[name="keywords"]').attr('value', data["keywords"]);
-          $('input[name="contact"]').attr('value', data["contact"]);
-          $('input[name="phone"]').attr('value', data["phone"]);
-          $('input[name="salary"]').attr('value', data["salary"]);
-
-          let rct = data["recruiters"][0]["name"];
-          if (!rct) rct = "";
-          $('input[name="recruiter"]').attr('value', rct);
-          $('input[name="status"]').attr('value', data["status"]);
-        }
-
-        console.log("data: " + JSON.stringify(data));
-      });
-
-
-    })
-  </script>
+  <script type="text/javascript" src="./js/jobs_view.js"></script>
 </body>
 
 </html>
