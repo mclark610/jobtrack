@@ -32,7 +32,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.3.1",
     "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "body-parser": "^1.18.3",
@@ -46,7 +45,6 @@
     "fs": "0.0.1-security",
     "fs-extra": "^6.0.1",
     "jquery": "^3.3.1",
-    "module": "^1.2.5",
     "mongodb": "^3.1.0",
     "mongoose": "^5.2.7",
     "net": "^1.0.2",
@@ -57,10 +55,10 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "webpack": "^4.16.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   }
 }
