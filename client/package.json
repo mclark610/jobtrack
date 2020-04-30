@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "datatables.net": ">=1.10.19",
-    "jquery": ">=3.4.0",
+    "jquery": ">=3.5.0",
     "react": ">=16.4.1",
     "react-dom": ">=16.4.2",
     "react-foundation": ">=0.9.5",
